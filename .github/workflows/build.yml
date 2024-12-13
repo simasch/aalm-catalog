@@ -40,3 +40,6 @@ jobs:
 
             -   name: Docker Push
                 run: docker push simas/catalog:${{ github.run_number }}
+
+            -   name: Update deployment
+                run: kubectl set image deployment/catalog catalog-1=simas/catalog:${{ github.run_number }}
